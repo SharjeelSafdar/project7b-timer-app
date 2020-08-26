@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.minutes, .seconds {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    font-size: 4.5rem !important;
+}
+
+.colon {
+    padding-bottom: 10px !important;
+    font-size: 4.5rem !important;
+}
+
+@media (max-width: 400px) {
+    .time {
+        font-size: 3.5rem !important;
+    }
+    
+    .colon {
+        font-size: 3.5rem !important;
+    }
+}
