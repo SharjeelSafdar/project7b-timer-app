@@ -10,18 +10,19 @@ const PomodoroSetting: React.FC<{}> = () => {
     const {
         minutes, increaseMinutes, decreaseMinutes,
         seconds, increaseSeconds, decreaseSeconds,
+        isRunning,
     } = useContext(GlobalContext);
 
     return (
         <div className={styles.container}>
             <div className={styles.minutes}>
-                <Button onClick={increaseMinutes}>
+                <Button onClick={increaseMinutes} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
                     <FaCaretUp size="3rem"/>
                 </Button>
                 <Typography variant="h4" className={styles.time}>
                     {minutes < 10 ? '0'+minutes.toString() : minutes}
                 </Typography>
-                <Button onClick={decreaseMinutes}>
+                <Button onClick={decreaseMinutes} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
                     <FaCaretDown size="3rem"/>
                 </Button>
             </div>
@@ -29,13 +30,13 @@ const PomodoroSetting: React.FC<{}> = () => {
             <Typography variant="h4" className={styles.colon}>:</Typography>
 
             <div className={styles.seconds}>
-                <Button onClick={increaseSeconds}>
+                <Button onClick={increaseSeconds} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
                     <FaCaretUp size="3rem"/>
                 </Button>
                 <Typography variant="h4" className={styles.time}>
                     {seconds < 10 ? '0'+seconds.toString() : seconds}
                 </Typography>
-                <Button onClick={decreaseSeconds}>
+                <Button onClick={decreaseSeconds} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
                     <FaCaretDown size="3rem"/>
                 </Button>
             </div>
