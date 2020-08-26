@@ -26,6 +26,11 @@ export const reducerFunc = (state: ReducerState, action: ReducerActions) => {
                     ? state.minutes 
                     : (state.minutes > 0) ? (state.minutes - 1) : 59,
             }
+        case 'TOGGLE_IS_RUNNING':
+            return {
+                ...state,
+                isRunning: !state.isRunning,
+            }
         default:
             return state;
     }

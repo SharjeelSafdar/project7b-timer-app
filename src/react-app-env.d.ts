@@ -4,6 +4,7 @@
 type ReducerState = {
     minutes: number;
     seconds: number;
+    isRunning: boolean;
 }
 
 // Type(s) for Reducer Actions
@@ -23,7 +24,11 @@ type DecreaseSeconds = {
     readonly type: 'DECREASE_SECONDS';
     readonly payload: null;
 }
-type ReducerActions = IncreaseMinutes | DecreaseMinutes | IncreaseSeconds | DecreaseSeconds
+type ToggleIsRunning = {
+    readonly type: 'TOGGLE_IS_RUNNING';
+    readonly payload: null;
+}
+type ReducerActions = IncreaseMinutes | DecreaseMinutes | IncreaseSeconds | DecreaseSeconds | ToggleIsRunning
 
 // Context Type
 type ContextType = ReducerState & {
@@ -31,4 +36,5 @@ type ContextType = ReducerState & {
     decreaseMinutes?: () => void;
     increaseSeconds?: () => void;
     decreaseSeconds?: () => void;
+    toggleIsRunning?: () => void;
 }

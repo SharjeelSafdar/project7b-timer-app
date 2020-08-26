@@ -4,6 +4,7 @@ import { reducerFunc } from './reducerFunc';
 const initialState: ReducerState = {
     minutes: 0,
     seconds: 0,
+    isRunning: false,
 }
 
 export const GlobalContext = createContext<ContextType>(initialState);
@@ -15,6 +16,7 @@ export const ContextProvider: React.FC<{}> = ({children}) => {
     const decreaseMinutes = () => dispatch({type: 'DECREASE_MINUTES', payload: null})
     const increaseSeconds = () => dispatch({type: 'INCREASE_SECONDS', payload: null})
     const decreaseSeconds = () => dispatch({type: 'DECREASE_SECONDS', payload: null})
+    const toggleIsRunning = () => dispatch({type: 'TOGGLE_IS_RUNNING', payload: null})
 
     return (
         <GlobalContext.Provider value={{
@@ -23,6 +25,7 @@ export const ContextProvider: React.FC<{}> = ({children}) => {
             decreaseMinutes,
             increaseSeconds,
             decreaseSeconds,
+            toggleIsRunning,
         }}>
             {children}
         </GlobalContext.Provider>
