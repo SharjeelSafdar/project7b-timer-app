@@ -2,56 +2,33 @@
 
 // Type(s) for Reducer State
 type ReducerState = {
-    pomoMin: number;
-    pomoSec: number;
-    breakMin: number;
-    breakSec: number;
+    minutes: number;
+    seconds: number;
 }
 
 // Type(s) for Reducer Actions
-type IncreasePomoMin = {
-    readonly type: 'INCREASE_POMODORO_MINUTES';
+type IncreaseMinutes = {
+    readonly type: 'INCREASE_MINUTES';
     readonly payload: null;
 }
-type DecreasePomoMin = {
-    readonly type: 'DECREASE_POMODORO_MINUTES';
+type DecreaseMinutes = {
+    readonly type: 'DECREASE_MINUTES';
     readonly payload: null;
 }
-type IncreasePomoSec = {
-    readonly type: 'INCREASE_POMODORO_SECONDS';
+type IncreaseSeconds = {
+    readonly type: 'INCREASE_SECONDS';
     readonly payload: null;
 }
-type DecreasePomoSec = {
-    readonly type: 'DECREASE_POMODORO_SECONDS';
+type DecreaseSeconds = {
+    readonly type: 'DECREASE_SECONDS';
     readonly payload: null;
 }
-type IncreaseBreakMin = {
-    readonly type: 'INCREASE_BREAK_MINUTES';
-    readonly payload: null;
-}
-type DecreaseBreakMin = {
-    readonly type: 'DECREASE_BREAK_MINUTES';
-    readonly payload: null;
-}
-type IncreaseBreakSec = {
-    readonly type: 'INCREASE_BREAK_SECONDS';
-    readonly payload: null;
-}
-type DecreaseBreakSec = {
-    readonly type: 'DECREASE_BREAK_SECONDS';
-    readonly payload: null;
-}
-type ReducerActions = IncreasePomoMin | DecreasePomoMin | IncreasePomoSec | DecreasePomoSec |
-                      IncreaseBreakMin | DecreaseBreakMin | IncreaseBreakSec | DecreaseBreakSec
+type ReducerActions = IncreaseMinutes | DecreaseMinutes | IncreaseSeconds | DecreaseSeconds
 
 // Context Type
 type ContextType = ReducerState & {
-    increasePomoMin?: () => void;
-    decreasePomoMin?: () => void;
-    increasePomoSec?: () => void;
-    decreasePomoSec?: () => void;
-    increaseBreakMin?: () => void;
-    decreaseBreakMin?: () => void;
-    increaseBreakSec?: () => void;
-    decreaseBreakSec?: () => void;
+    increaseMinutes?: () => void;
+    decreaseMinutes?: () => void;
+    increaseSeconds?: () => void;
+    decreaseSeconds?: () => void;
 }
