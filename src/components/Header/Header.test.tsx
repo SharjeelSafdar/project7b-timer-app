@@ -9,12 +9,4 @@ describe ('Tests for <Header /> Component', () => {
         const { getByText } = render(<Header />);
         expect(getByText(/timer app/i)).toBeInTheDocument();
     })
-
-    it ('Renders four menu buttons', () => {
-        const { getByTestId } = render(<Header />);
-        expect(getByTestId('homeLink')).toHaveTextContent('Home');
-        expect(getByTestId('pomodoroLink')).toHaveTextContent('Pomodoro');
-        expect(getByTestId('timerLink')).toHaveTextContent('Timer');
-        expect(getByTestId('stopwatchLink')).toHaveTextContent('Stopwatch');
-    })
 })
