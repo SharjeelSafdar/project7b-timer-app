@@ -1,0 +1,25 @@
+.pomodoroDuration, .breakDuration {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.pomodoroDuration {
+    margin-bottom: 20px;
+}
+
+.durationFor {
+    width: 250px;
+}
+
+.minutes, .seconds {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.colon {
+    padding-bottom: 10px !important;
+}
