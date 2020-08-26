@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 // Icons
-import { FaGithub, FaPlay/* , FaPause */ } from 'react-icons/fa';
+import { FaGithub, FaPlay, FaPause } from 'react-icons/fa';
 import { MdReplay } from 'react-icons/md';
+// Context
+import { GlobalContext } from '../../context/context';
 // Styles
 import styles from './Player.module.css';
 
@@ -32,15 +34,23 @@ const useStyles = makeStyles({
 });
 
 const Player: React.FC<{}> = () => {
+    const { isRunning, toggleIsRunning } = useContext(GlobalContext);
     const classes = useStyles();
     return (
         <div className={styles.container}>
             <Button className={classes.gitBtn} data-testid="gitBtn" title="Repository Link">
                 <FaGithub />
             </Button>
-            <Button className={classes.playBtn} data-testid="startStopBtn" title="Start/Stop Button">
-                <FaPlay />
+
+            <Button
+                onClick={toggleIsRunning}
+                className={classes.playBtn} 
+                data-testid="startStopBtn" 
+                title={`${isRunning ? 'Stop' : 'Start'} Button`}
+            >
+                {isRunning ? <FaPause /> : <FaPlay />}
             </Button>
+
             <Button className={classes.resetBtn} data-testid="resetBtn" title="Reset Button">
                 <MdReplay />
             </Button>
