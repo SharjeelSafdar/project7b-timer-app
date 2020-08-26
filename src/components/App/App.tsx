@@ -2,7 +2,7 @@ import React from 'react';
 // Components
 import Header from '../Header/Header';
 import Player from '../Player/Player';
-import PomodoroSetting from '../PomodoroSetting/PomodoroSetting';
+import PomodoroSetting from '../TimerDisplay/TimerDisplay';
 // Context
 import { ContextProvider } from '../../context/context'
 // Styles
