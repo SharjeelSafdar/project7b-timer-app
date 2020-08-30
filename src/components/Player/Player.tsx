@@ -50,7 +50,7 @@ const Player: React.FC<PlayerProps> = ({
                         return (prev - 1)
                     else {
                         setMinutes(prev => ((prev>0) ? (prev-1) : 0));
-                        return 0;
+                        return 59;
                     }
                 })
             }
