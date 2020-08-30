@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useRef } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 // Icons
 import { FaGithub, FaPlay, FaPause } from 'react-icons/fa';
 import { MdReplay } from 'react-icons/md';
 // Context
-import { GlobalContext } from '../../context/context';
+// import { GlobalContext } from '../../context/context';
 // Styles
 import styles from './Player.module.css';
 
@@ -33,9 +33,52 @@ const useStyles = makeStyles({
     }
 });
 
-const Player: React.FC<{}> = () => {
-    const { isRunning, toggleIsRunning } = useContext(GlobalContext);
+const Player: React.FC<PlayerProps> = ({
+    minutes, seconds, isRunning, setIsRunning, setSeconds, setMinutes}) => {
+    // const { minutes, seconds, isRunning, startTimer, stopTimer, resetTimer } = useContext(GlobalContext);
+    let secondsLeft = useRef<number>(0);
+    let intervalId = useRef<NodeJS.Timeout | null>(null);
     const classes = useStyles();
+    secondsLeft.current = minutes*60 + seconds;
+
+    const startTimer = () => {
+        if (isRunning || secondsLeft.current <= 0)
+            return null;
+        
+        setIsRunning(true);
+        intervalId.current = setInterval(() => {
+            if (secondsLeft.current > 1) {
+                setSeconds(prev => {
+                    if (prev > 0)
+                        return (prev - 1)
+                    else {
+                        setMinutes(prev => ((prev>0) ? (prev-1) : 0));
+                        return 0;
+                    }
+                })
+            }
+            else {
+                if (intervalId.current !== null)
+                    clearInterval(intervalId.current)
+                setSeconds(0);
+                setIsRunning(false);
+            }
+        }, 1000)
+    }
+    const stopTimer = () => {
+        if (isRunning && intervalId.current !== null) {
+            clearInterval(intervalId.current);
+            setIsRunning(false);
+        }
+    }
+    const resetTimer = () => {
+        setIsRunning(false);
+        setMinutes(0);
+        setSeconds(0);
+        if (intervalId !== null)
+            intervalId.current = null;
+    }
+
     return (
         <div className={styles.container}>
             <Button className={classes.gitBtn} data-testid="gitBtn" title="Repository Link">
@@ -43,7 +86,7 @@ const Player: React.FC<{}> = () => {
             </Button>
 
             <Button
-                onClick={toggleIsRunning}
+                onClick={isRunning ? stopTimer : startTimer}
                 className={classes.playBtn} 
                 data-testid="startStopBtn" 
                 title={`${isRunning ? 'Stop' : 'Start'} Button`}
@@ -51,7 +94,12 @@ const Player: React.FC<{}> = () => {
                 {isRunning ? <FaPause /> : <FaPlay />}
             </Button>
 
-            <Button className={classes.resetBtn} data-testid="resetBtn" title="Reset Button">
+            <Button 
+                onClick={resetTimer}
+                className={classes.resetBtn} 
+                data-testid="resetBtn" 
+                title="Reset Timer"
+            >
                 <MdReplay />
             </Button>
         </div>

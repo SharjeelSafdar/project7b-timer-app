@@ -1,22 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 // Components
 import Header from '../Header/Header';
 import Player from '../Player/Player';
-import PomodoroSetting from '../TimerDisplay/TimerDisplay';
+import TimerDisplay from '../TimerDisplay/TimerDisplay';
 // Context
-import { ContextProvider } from '../../context/context'
+// import { ContextProvider } from '../../context/context'
 // Styles
 import styles from './App.module.css';
 
 const App = () => {
+  const [ seconds, setSeconds ] = useState<number>(0);
+  const [ minutes, setMinutes ] = useState<number>(0);
+  const [ isRunning, setIsRunning ] = useState<boolean>(false);
   return (
     <div className={styles.container}>
-      <ContextProvider>
+      {/* <ContextProvider> */}
         <Header />
         <div className={styles.padding}></div>
-        <PomodoroSetting />
-        <Player />
-      </ContextProvider>
+        <TimerDisplay 
+          minutes={minutes}
+          setMinutes={setMinutes}
+          seconds={seconds}
+          setSeconds={setSeconds}
+          isRunning={isRunning}
+        />
+        <Player 
+          minutes={minutes}
+          seconds={seconds}
+          isRunning={isRunning}
+          setIsRunning={setIsRunning}
+          setSeconds={setSeconds}
+          setMinutes={setMinutes}
+        />
+      {/* </ContextProvider> */}
     </div>
   );
 }
