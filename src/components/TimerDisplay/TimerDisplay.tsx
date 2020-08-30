@@ -3,16 +3,8 @@ import { Button, Typography } from '@material-ui/core';
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 // Styles
 import styles from './TimerDisplay.module.css';
-// Context
-// import { GlobalContext } from '../../context/context';
 
 const TimerDisplay: React.FC<TimerDisplayProps> = ({minutes, setMinutes, seconds, setSeconds, isRunning}) => {
-    // const {
-    //     minutes, increaseMinutes, decreaseMinutes,
-    //     seconds, increaseSeconds, decreaseSeconds,
-    //     isRunning,
-    // } = useContext(GlobalContext);
-
     const increaseMinutes = () => setMinutes(prev => (prev < 59 ? (prev+1) : 0));
     const decreaseMinutes = () => setMinutes(prev => (prev > 0 ? (prev-1) : 59));
     const increaseSeconds = () => setSeconds(prev => {

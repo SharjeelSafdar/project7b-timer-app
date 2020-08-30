@@ -4,8 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // Icons
 import { FaGithub, FaPlay, FaPause } from 'react-icons/fa';
 import { MdReplay } from 'react-icons/md';
-// Context
-// import { GlobalContext } from '../../context/context';
 // Styles
 import styles from './Player.module.css';
 
@@ -35,7 +33,6 @@ const useStyles = makeStyles({
 
 const Player: React.FC<PlayerProps> = ({
     minutes, seconds, isRunning, setIsRunning, setSeconds, setMinutes}) => {
-    // const { minutes, seconds, isRunning, startTimer, stopTimer, resetTimer } = useContext(GlobalContext);
     let secondsLeft = useRef<number>(0);
     let intervalId = useRef<NodeJS.Timeout | null>(null);
     const classes = useStyles();
@@ -58,8 +55,10 @@ const Player: React.FC<PlayerProps> = ({
                 })
             }
             else {
-                if (intervalId.current !== null)
+                if (intervalId.current !== null) {
                     clearInterval(intervalId.current)
+                    intervalId.current = null;
+                }
                 setSeconds(0);
                 setIsRunning(false);
             }
@@ -68,6 +67,7 @@ const Player: React.FC<PlayerProps> = ({
     const stopTimer = () => {
         if (isRunning && intervalId.current !== null) {
             clearInterval(intervalId.current);
+            intervalId.current = null;
             setIsRunning(false);
         }
     }
@@ -75,15 +75,23 @@ const Player: React.FC<PlayerProps> = ({
         setIsRunning(false);
         setMinutes(0);
         setSeconds(0);
-        if (intervalId !== null)
+        if (intervalId.current !== null) {
+            clearInterval(intervalId.current);
             intervalId.current = null;
+        }
     }
 
     return (
         <div className={styles.container}>
-            <Button className={classes.gitBtn} data-testid="gitBtn" title="Repository Link">
-                <FaGithub />
-            </Button>
+            <a
+                href="https://github.com/SharjeelSafdar/project7b-timer-app"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <Button className={classes.gitBtn} data-testid="gitBtn" title="Repository Link">
+                    <FaGithub />
+                </Button>
+            </a>
 
             <Button
                 onClick={isRunning ? stopTimer : startTimer}
