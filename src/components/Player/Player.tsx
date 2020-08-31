@@ -97,7 +97,7 @@ const Player: React.FC<PlayerProps> = ({
                 onClick={isRunning ? stopTimer : startTimer}
                 className={classes.playBtn} 
                 data-testid="startStopBtn" 
-                title={`${isRunning ? 'Stop' : 'Start'} Button`}
+                title={`${isRunning ? 'Stop' : 'Start'} Timer`}
             >
                 {isRunning ? <FaPause /> : <FaPlay />}
             </Button>

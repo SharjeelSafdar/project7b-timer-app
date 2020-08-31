@@ -1,8 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  expect(getByText(/timer app/i)).toBeInTheDocument();
-});
+describe('Tests for <App /> component', () => {
+	afterEach(cleanup);
+
+	test('Renders without crashing', () => {
+		render(<App />);
+	});
+})

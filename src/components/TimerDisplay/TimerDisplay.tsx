@@ -26,13 +26,21 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({minutes, setMinutes, seconds
     return (
         <div className={styles.container}>
             <div className={styles.minutes}>
-                <Button onClick={increaseMinutes} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
+                <Button 
+                    onClick={increaseMinutes} 
+                    style={{ visibility: isRunning ? 'hidden' : 'visible' }}
+                    data-testid="increaseMinutesBtn"
+                >
                     <FaCaretUp size="3rem"/>
                 </Button>
-                <Typography variant="h4" className={styles.time}>
+                <Typography variant="h4" className={styles.time} data-testid="minutes">
                     {minutes < 10 ? '0'+minutes.toString() : minutes}
                 </Typography>
-                <Button onClick={decreaseMinutes} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
+                <Button 
+                    onClick={decreaseMinutes} 
+                    style={{ visibility: isRunning ? 'hidden' : 'visible' }}
+                    data-testid="decreaseMinutesBtn"
+                >
                     <FaCaretDown size="3rem"/>
                 </Button>
             </div>
@@ -40,13 +48,21 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({minutes, setMinutes, seconds
             <Typography variant="h4" className={styles.colon}>:</Typography>
 
             <div className={styles.seconds}>
-                <Button onClick={increaseSeconds} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
+                <Button 
+                    onClick={increaseSeconds} 
+                    style={{ visibility: isRunning ? 'hidden' : 'visible' }}
+                    data-testid="increaseSecondsBtn"
+                >
                     <FaCaretUp size="3rem"/>
                 </Button>
-                <Typography variant="h4" className={styles.time}>
+                <Typography variant="h4" className={styles.time} data-testid="seconds">
                     {seconds < 10 ? '0'+seconds.toString() : seconds}
                 </Typography>
-                <Button onClick={decreaseSeconds} style={{ visibility: isRunning ? 'hidden' : 'visible' }}>
+                <Button 
+                    onClick={decreaseSeconds} 
+                    style={{ visibility: isRunning ? 'hidden' : 'visible' }}
+                    data-testid="decreaseSecondsBtn"
+                >
                     <FaCaretDown size="3rem"/>
                 </Button>
             </div>

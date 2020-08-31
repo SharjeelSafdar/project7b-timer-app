@@ -4,6 +4,10 @@ import Header from './Header';
 
 describe ('Tests for <Header /> Component', () => {
     afterEach(cleanup);
+    
+    it ('Renders without crashing', () => {
+        render(<Header />);
+    })
 
     it ('Renders "Timer App" title', () => {
         const { getByText } = render(<Header />);
