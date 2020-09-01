@@ -13,20 +13,21 @@
 }
 
 .time {
-    font-size: 4.5rem !important;
+    font-size: 5rem !important;
 }
 
 .colon {
     padding-bottom: 12px !important;
-    font-size: 4.5rem !important;
+    font-size: 5rem !important;
 }
 
-@media (max-width: 400px) {
+@media (max-height: 400px) {
     .time {
-        font-size: 3.5rem !important;
+        font-size: 4rem !important;
+        line-height: 0.9 !important;
     }
-    
     .colon {
-        font-size: 3.5rem !important;
+        font-size: 4rem !important;
+        line-height: 0.9 !important;
     }
 }
