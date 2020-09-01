@@ -27,7 +27,7 @@ jobs:
       with: {cmd: install}
 
     - name: Run Tests
-      run: yarn test
+      run: yarn run test
     
     - name: Build React App
       run: yarn build
