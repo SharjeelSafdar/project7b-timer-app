@@ -26,7 +26,7 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({minutes, setMinutes, seconds
     return (
         <div className={styles.container}>
             <div className={styles.minutes}>
-                <Button 
+                <Button
                     onClick={increaseMinutes} 
                     style={{ visibility: isRunning ? 'hidden' : 'visible' }}
                     data-testid="increaseMinutesBtn"

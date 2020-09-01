@@ -57,4 +57,14 @@ describe ('Tests for <Player /> Component', () => {
         expect(setMinutes).toHaveBeenCalled();
         expect(setSeconds).toHaveBeenCalled();
     })
+
+    it ('Git Repo link is correct', () => {
+        const { getByTestId } = renderPlayer({});
+        const gitLink = getByTestId('gitLink');
+
+        expect( gitLink ).toBeInTheDocument();
+        expect( gitLink ).toHaveAttribute('href', 'https://github.com/SharjeelSafdar/project7b-timer-app');
+        expect( gitLink ).toHaveAttribute('target', '_blank');
+        expect( gitLink ).toHaveAttribute('rel', 'noopener noreferrer');
+    })
 })

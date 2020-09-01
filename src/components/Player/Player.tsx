@@ -87,6 +87,7 @@ const Player: React.FC<PlayerProps> = ({
                 href="https://github.com/SharjeelSafdar/project7b-timer-app"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-testid="gitLink"
             >
                 <Button className={classes.gitBtn} data-testid="gitBtn" title="Repository Link">
                     <FaGithub />
