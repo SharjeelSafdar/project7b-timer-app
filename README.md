@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Link to Web App
 
-The web app has been deployed to Surge, and can be accessed [here](https://timer-app-p7b.netlify.app/).
+The web app has been deployed to Netlify, and can be accessed [here](https://timer-app-p7b.netlify.app/).
 
 ### Features
 
